@@ -6,7 +6,7 @@
 int main() {
 
     Memory memory;
-    memory.readFromFile("/Users/picsartacademy/CLionProjects/CPU simulator/code.txt");
+    memory.readFromFile("/Users/picsartacademy/CLionProjects/CPU__simulator/assambly.txt");
     memory.printCode();
 
     auto* registers = new Register;

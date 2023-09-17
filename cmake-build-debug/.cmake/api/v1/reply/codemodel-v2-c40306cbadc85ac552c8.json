@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/picsartacademy/CLionProjects/CPU/cmake-build-debug",
-		"source" : "/Users/picsartacademy/CLionProjects/CPU"
+		"build" : "/Users/picsartacademy/CLionProjects/CPU__simulator/cmake-build-debug",
+		"source" : "/Users/picsartacademy/CLionProjects/CPU__simulator"
 	},
 	"version" : 
 	{

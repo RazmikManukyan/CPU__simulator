@@ -1,9 +1,6 @@
 start:
     mov R1, 40
-    mov R2, 10
-l1:
-    sub R1, R2
-    cmp R1, R2
-    jg l1
+    inc R1
+    dec R1
 end:
 end

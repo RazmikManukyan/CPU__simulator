@@ -5,9 +5,11 @@
 #include <fstream>
 #include "Instructions.h"
 
+// Define a struct to represent the program memory.
 struct Memory {
     std::map<int, std::string> code;
 
+    // Read program instructions from a file and populate the 'code' map.
     void readFromFile(const std::string &filename) {
         std::fstream file(filename);
         if (!file.is_open()) {
@@ -43,6 +45,7 @@ struct Memory {
         file.close();
     }
 
+    // Print the contents of the 'code' map (program instructions).
     void printCode() const {
         for (const auto &entry: code) {
             std::cout << "Line " << entry.first << ": " << entry.second << std::endl;

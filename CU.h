@@ -1,5 +1,6 @@
 #ifndef CPU_SIMULATOR_CU_H
 #define CPU_SIMULATOR_CU_H
+
 #include <iostream>
 #include "InstructionsMap.h"
 #include "Register.h"
@@ -10,9 +11,11 @@ class CU {
     Register *reg;
     InstructionsMap instructionsMap;
 public:
+    // Constructor takes a Register pointer as a parameter and initializes EIP.
     explicit CU(Register *reg) : reg(reg), EIP(2) {}
 
-    Instructions fetchInstructions(const std::map<int, std::string> &memory,int EIP) {
+    // Fetch instructions from memory and return them as an Instructions object.
+    Instructions fetchInstructions(const std::map<int, std::string> &memory, int EIP) {
         while (EIP > 0 && EIP - 1 <= memory.size()) {
             const std::string &instructionText = memory.at(EIP);
             if (!instructionText.empty() && instructionText.back() == ':') {
@@ -30,6 +33,7 @@ public:
         throw std::runtime_error("End of program.");
     }
 
+    // Parse a single instruction and return it as an Instructions object.
     Instructions parseInstruction(const std::string &instructionText, int &lineNumber) {
         Instructions instructions;
         std::vector<std::string> tokens = Functions::split(instructionText, ' ');
@@ -49,6 +53,7 @@ public:
         return instructions;
     }
 
+    // Execute the instructions based on their opcode and operands.
     void executeInstructions(const Instructions &instructions) {
         const std::string &opcode = instructions.opcode;
         const std::vector<std::string> &operands = instructions.operands;
@@ -74,12 +79,12 @@ public:
         ++EIP;
     }
 
+    // Get the current value of EIP (Instruction Pointer).
     int getEip() const {
         return EIP;
     }
 private:
-    int EIP;
+    int EIP; // The Instruction Pointer.
 };
-
 
 #endif //CPU_SIMULATOR_CU_H
